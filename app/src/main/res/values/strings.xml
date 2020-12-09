@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">SweatworksDemo</string>
+    <string name="name">Name holder</string>
+    <string name="username">Username holder</string>
+    <string name="email">Email@holder</string>
+    <string name="address">Address holder</string>
+    <string name="phone_number">+1 (000) 000–0000</string>
+    <string name="add_contact">Add as contact</string>
+    <string name="save">Save as favorite</string>
+    <string name="search_hint">Search..</string>
 </resources>

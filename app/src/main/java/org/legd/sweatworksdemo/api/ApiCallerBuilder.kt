@@ -1,11 +1,11 @@
-package com.example.sweatworksdemo.api
+package org.legd.sweatworksdemo.api
 
+import com.google.gson.GsonBuilder
 import okhttp3.ConnectionSpec
-import okhttp3.Interceptor
 import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.lang.reflect.Modifier
 import java.util.*
 
 object ApiCallerBuilder {

@@ -1,6 +1,6 @@
-package com.example.sweatworksdemo.api.interfaces
+package org.legd.sweatworksdemo.api.interfaces
 
-import com.example.sweatworksdemo.api.model.RandomUserGenerator
+import org.legd.sweatworksdemo.api.model.RandomUserGenerator
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

@@ -1,4 +1,4 @@
-package com.example.sweatworksdemo
+package org.legd.sweatworksdemo
 
 import org.junit.Test
 
