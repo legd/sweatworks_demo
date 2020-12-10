@@ -1,16 +1,17 @@
 package org.legd.sweatworksdemo.api
 
-import com.google.gson.GsonBuilder
 import okhttp3.ConnectionSpec
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.lang.reflect.Modifier
 import java.util.*
 
+/**
+ * Class for wrapping the initialization of the Retrofit and RugEndpoints objects, using a
+ * singleton.
+ */
 object ApiCallerBuilder {
 
-//    private val client = OkHttpClient.Builder().build()
     private val client = getHttpClient()
 
     private val retrofit = Retrofit.Builder()

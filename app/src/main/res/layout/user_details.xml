@@ -106,7 +106,7 @@
             android:id="@+id/add_contact"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_person_add_black_24dp"
+            android:src="@drawable/ic_person_add_white_24dp"
             fab:fab_size="mini"
             fab:fab_label="@string/add_contact" />
 
@@ -114,7 +114,7 @@
             android:id="@+id/add_favorite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_favorite_border_black_24dp"
+            android:src="@drawable/ic_favorite_border_white_24dp"
             fab:fab_size="mini"
             fab:fab_label="@string/save" />
 

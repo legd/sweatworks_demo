@@ -4,6 +4,9 @@ import android.os.Parcel
 import android.os.Parcelable
 import org.legd.sweatworksdemo.database.models.User
 
+/**
+ * File containing all the API models.
+ */
 data class RandomUserGenerator(
     val info: Info,
     val results: List<ApiUser>

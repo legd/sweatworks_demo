@@ -13,6 +13,9 @@ import org.legd.sweatworksdemo.R
 import org.legd.sweatworksdemo.api.model.ApiUser
 import org.legd.sweatworksdemo.ui.UserDetails
 
+/**
+ * Class of the custom adapter for the API users list.
+ */
 class ApiUserAdapter(private val context: Context) : RecyclerView.Adapter<ApiUserAdapter.UserViewHolder> () {
 
     private var apiUserList: MutableList<ApiUser> = ArrayList()
@@ -45,6 +48,15 @@ class ApiUserAdapter(private val context: Context) : RecyclerView.Adapter<ApiUse
         this.apiUserList.addAll(userList)
         notifyDataSetChanged()
     }
+
+    //===========================================================================
+    //                           PRIVATE CLASSES
+    //===========================================================================
+
+    /**
+     * Class for the implementation of the ViewHolder design pattern used to represent the API users
+     * grid.
+     */
 
     class UserViewHolder(item: View) : RecyclerView.ViewHolder(item) {
         val thumbnail = item.findViewById<ImageView>(R.id.user_thumbnail)

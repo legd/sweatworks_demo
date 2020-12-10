@@ -2,6 +2,7 @@ package org.legd.sweatworksdemo.ui.adapters
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +13,11 @@ import com.bumptech.glide.Glide
 import org.legd.sweatworksdemo.R
 import org.legd.sweatworksdemo.database.models.User
 import org.legd.sweatworksdemo.ui.UserDetails
+import java.net.UnknownServiceException
 
+/**
+ * Class of the custom adapter for the favorite users list.
+ */
 class FavoriteUserAdapter(private val context: Context) : RecyclerView.Adapter<FavoriteUserAdapter.FavoriteUserViewHolder> ()  {
 
     private var favoriteUserList: MutableList<User> = ArrayList()
@@ -42,10 +47,25 @@ class FavoriteUserAdapter(private val context: Context) : RecyclerView.Adapter<F
     }
 
     fun updateList(userList: List<User>) {
+        this.favoriteUserList.clear()
         this.favoriteUserList.addAll(userList)
         notifyDataSetChanged()
     }
 
+    fun searchResult(userResults: List<User>) {
+        this.favoriteUserList.clear()
+        this.favoriteUserList.addAll(userResults)
+        notifyDataSetChanged()
+    }
+
+    //===========================================================================
+    //                           PRIVATE CLASSES
+    //===========================================================================
+
+    /**
+     * Class for the implementation of the ViewHolder design pattern used to represent the favorite
+     * users list.
+     */
     class FavoriteUserViewHolder(item: View) : RecyclerView.ViewHolder(item) {
         val thumbnail = item.findViewById<ImageView>(R.id.favorite_user_thumbnail)
         val userCard = item.findViewById<CardView>(R.id.favorite_user_card)

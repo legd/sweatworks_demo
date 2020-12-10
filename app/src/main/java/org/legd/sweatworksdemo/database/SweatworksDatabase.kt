@@ -7,6 +7,9 @@ import androidx.room.RoomDatabase
 import org.legd.sweatworksdemo.database.dao.UserDao
 import org.legd.sweatworksdemo.database.models.User
 
+/**
+ * Abstract class to describe the database.
+ */
 @Database(entities = arrayOf(User::class), version = 1, exportSchema = false)
 abstract class SweatworksDatabase : RoomDatabase() {
 

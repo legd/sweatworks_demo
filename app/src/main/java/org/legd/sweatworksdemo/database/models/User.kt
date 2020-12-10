@@ -7,6 +7,9 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
+/**
+ * Class User to modelating the user table in database.
+ */
 @Entity(tableName = "users")
 class User(
     @PrimaryKey() @NonNull val uuid: String,

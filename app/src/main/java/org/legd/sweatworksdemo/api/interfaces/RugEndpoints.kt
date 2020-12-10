@@ -5,6 +5,9 @@ import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
 
+/**
+ * Interface declaring all the available endpoints to call.
+ */
 interface RugEndpoints {
 
     /**
