@@ -2,6 +2,7 @@ package org.legd.sweatworksdemo.api.model
 
 import android.os.Parcel
 import android.os.Parcelable
+import org.legd.sweatworksdemo.database.models.User
 
 data class RandomUserGenerator(
     val info: Info,
@@ -222,5 +223,19 @@ data class ApiUser(
         override fun newArray(size: Int): Array<ApiUser?> {
             return arrayOfNulls(size)
         }
+    }
+
+    fun asDatabaseModel() : User {
+        val fullName = String.format("%s%s%s", this.name.first, " ", this.name.last)
+        val fullAddress = String.format("%s%s%s%s%s%s%s%s%s%s%s",
+            this.location.street.number, " ",
+            this.location.street.name, "\n",
+            this.location.city, ", ",
+            this.location.state, " ",
+            this.location.postcode, "\n",
+            this.location.country)
+
+        return User(this.login.uuid, fullName, this.login.username, this.email, fullAddress,
+            this.phone, this.cell, this.picture.thumbnail, this.picture.medium, this.picture.large)
     }
 }

@@ -7,18 +7,19 @@ import android.provider.ContactsContract
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.activity.viewModels
 import com.bumptech.glide.Glide
 import com.github.clans.fab.FloatingActionButton
 import org.legd.sweatworksdemo.R
 import org.legd.sweatworksdemo.api.model.ApiUser
+import org.legd.sweatworksdemo.app.SweatworksApplication
 import org.legd.sweatworksdemo.database.models.User
-import org.legd.sweatworksdemo.repositories.UserRepository
+import org.legd.sweatworksdemo.viewmodel.UserViewModelFactory
+import org.legd.sweatworksdemo.viewmodel.UsersViewModel
 
 class UserDetails : AppCompatActivity() {
 
-    private lateinit var selectedUser: ApiUser
-
-
+    private var selectedUser: ApiUser? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,36 +47,40 @@ class UserDetails : AppCompatActivity() {
 
         val addFavorite = findViewById<FloatingActionButton>(R.id.add_favorite)
         addFavorite.setOnClickListener(View.OnClickListener {
-//            UserRepository.
+            val usersModel: UsersViewModel by viewModels {
+                UserViewModelFactory((application as SweatworksApplication).userRepository)
+            }
+//            val usersModel: UsersViewModel by viewModels()
+            usersModel.saveUserAsFavorite(this.selectedUser!!.asDatabaseModel())
         })
 
         if(intent.extras != null) {
 
-            val selectedUser = intent.getParcelableExtra<ApiUser>("selected_user")
+            selectedUser = intent.getParcelableExtra<ApiUser>("selected_user")
             if(selectedUser != null) {
 
                 Glide.with(this)
                     .asBitmap()
-                    .load(selectedUser.picture.large)
+                    .load(selectedUser!!.picture.large)
                     .into(userPicture)
 
-                val fullName = String.format("%s%s%s", selectedUser.name.first, " ",
-                    selectedUser.name.last)
+                val fullName = String.format("%s%s%s", selectedUser!!.name.first, " ",
+                    selectedUser!!.name.last)
 
                 name.text = fullName
-                userName.text = selectedUser.login.username
-                email.text = selectedUser.email
+                userName.text = selectedUser!!.login.username
+                email.text = selectedUser!!.email
                 val fullAddress = String.format("%s%s%s%s%s%s%s%s%s%s%s",
-                    selectedUser.location.street.number, " ",
-                    selectedUser.location.street.name, "\n",
-                    selectedUser.location.city, ", ",
-                    selectedUser.location.state, " ",
-                    selectedUser.location.postcode, "\n",
-                    selectedUser.location.country)
+                    selectedUser!!.location.street.number, " ",
+                    selectedUser!!.location.street.name, "\n",
+                    selectedUser!!.location.city, ", ",
+                    selectedUser!!.location.state, " ",
+                    selectedUser!!.location.postcode, "\n",
+                    selectedUser!!.location.country)
 
                 address.text = fullAddress
-                phoneNumber.text = selectedUser.phone
-                cellNumber.text = selectedUser.cell
+                phoneNumber.text = selectedUser!!.phone
+                cellNumber.text = selectedUser!!.cell
 
             } else {
                 addFavorite.visibility = View.GONE

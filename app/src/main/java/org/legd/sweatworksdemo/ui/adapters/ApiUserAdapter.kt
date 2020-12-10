@@ -13,7 +13,7 @@ import org.legd.sweatworksdemo.R
 import org.legd.sweatworksdemo.api.model.ApiUser
 import org.legd.sweatworksdemo.ui.UserDetails
 
-class ApiUserAdapter(var context: Context) : RecyclerView.Adapter<ApiUserAdapter.UserViewHolder> () {
+class ApiUserAdapter(private val context: Context) : RecyclerView.Adapter<ApiUserAdapter.UserViewHolder> () {
 
     private var apiUserList: MutableList<ApiUser> = ArrayList()
 
@@ -35,8 +35,6 @@ class ApiUserAdapter(var context: Context) : RecyclerView.Adapter<ApiUserAdapter
             userDetailsIntent.putExtra("selected_user", this.apiUserList[position])
             this.context.startActivity(userDetailsIntent)
         })
-
-
     }
 
     override fun getItemCount(): Int {
